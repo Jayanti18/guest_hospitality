@@ -4,11 +4,12 @@ var mongoosePaginate = require('mongoose-paginate');
 
 var GuestSchema = new mongoose.Schema({
     name: String,
+    email: String,
     roomSize: String,
     roomNum: Number,
+    checkInDate: Date,
+    checkOutDate: Date,
     payment: String, 
-    numNight: Number,
-    date: Date,
     status: String
 })
 

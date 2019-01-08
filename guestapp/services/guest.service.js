@@ -43,11 +43,13 @@ exports.createGuest = async function (guest) {
 
     var newGuest = new Guest({
         name: guest.name,
+        email: guest.email,
         roomSize: guest.roomSize,
         roomNum: guest.roomNum,
+        checkInDate: guest.checkInDate,
+        checkOutDate: guest.checkOutDate,
         payment: guest.payment,
-        numNight: guest.numNight,
-        date: new Date(),
+        // date: new Date(),
         status: guest.status
     })
 
@@ -89,10 +91,13 @@ exports.updateGuest = async function(guest){
     //Edit the Guest Object 
 
     oldGuest.name = guest.name
+    oldGuest.email = guest.email
        oldGuest.roomSize = guest.roomSize
        oldGuest.roomNum = guest.roomNum
+       oldGuest.checkInDate = guest.checkInDate
+       oldGuest.checkOutDate = guest.checkOutDate
        oldGuest.payment = guest.payment
-       oldGuest.numNight = guest.numNight
+    //    oldGuest.date = guest.date
        oldGuest.status = guest.status
 
 

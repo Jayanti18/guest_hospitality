@@ -6,7 +6,7 @@ var GuestService = require('../services/guest.service.js');
 // Make sure to save the context of 
 //this module inside the _this variable
 
-_this = this
+// _this = this
 
 exports.getGuests = async function(req, res, next){
 
@@ -14,7 +14,7 @@ exports.getGuests = async function(req, res, next){
     //the existence of the query parameters
         
         var page = req.query.page ? req.query.page : 1
-        var limit = req.query.limit ? req.query.limit : 10; 
+        var limit = req.query.limit ? req.query.limit : 20; 
     
         try{
         
@@ -42,10 +42,12 @@ exports.getGuests = async function(req, res, next){
     
         var guest = {
             name: req.body.name,
+            email: req.body.email,
            roomSize: req.body.roomSize,
            roomNum: req.body.roomNum,
+           checkInDate: req.body.checkInDate,
+           checkOutDate: req.body.checkOutDate,
            payment: req.body.payment,
-           numNight: req.body.numNight,
            status: req.body.status
         }
     
@@ -53,9 +55,10 @@ exports.getGuests = async function(req, res, next){
             
     // Calling the Service function 
     //with the new object from the Request Body
+    // cap G changed to g.
         
             var createdGuest = await GuestService.createGuest(guest)
-            return res.status(201).json({status: 201, data: createdguest, message: "Succesfully Created Guest"})
+            return res.status(201).json({status: 201, data: createdGuest, message: "Succesfully Created Guest"})
         }catch(e){
             
     //Return an Error Response Message 
@@ -82,10 +85,12 @@ exports.getGuests = async function(req, res, next){
     var guest = {
         id,
         name: req.body.name ? req.body.name : null,
+        email: req.body.email ? req.body.email : null,
         roomSize: req.body.roomSize ? req.body.roomSize : null,
         roomNum: req.body.roomNum ? req.body.roomNum: null,
+        checkInDate: req.body.checkInDate ? req.body.checkInDate : null,
+        checkOutDate: req.body.checkOutDate ? req.body.checkOutDate : null,
         payment: req.body.payment ? req.body.payment : null,
-        numNight: req.body.numNight ? req.body.numNight : null,
         status: req.body.status ? req.body.status : null
     }
 
